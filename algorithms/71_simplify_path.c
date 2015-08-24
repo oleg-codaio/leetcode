@@ -1,7 +1,7 @@
 /**
  * Given an absolute path for a file (Unix-style), simplify it.
  *
- * @lc_runtime 0 ms
+ * @lc_runtime 0 ms (beats 100% of C coders)
  * @author oleg@osv.im
  */
 
