@@ -23,6 +23,7 @@ class Solution(object):
         maxWord = len(max(wordDict, key=len))
 
         wordDict = set(filter(lambda x: len(x) <= len(s), wordDict))
+
         # True if s[:i] is breakable
         mem = [set() for i in range(len(s) + 1)]
 
@@ -38,6 +39,7 @@ class Solution(object):
 
         if not mem[len(s)]:
             return []
+
         words = [(x, 0) for x in mem[len(s)]]
         while True:
             done = True
@@ -46,13 +48,16 @@ class Solution(object):
                 phrase, spaces = words.pop(0)
                 if len(phrase) - spaces is not len(s):
                     done = False
+
                     prevPhrases = mem[len(s) - len(phrase) + spaces]
                     for prev in prevPhrases:
                         words.append((prev + " " + phrase, spaces + 1))
+
                     if not prevPhrases:
                         raise Exception('Illegal state!')
                 else:
                     words.append((phrase, spaces))
+
             if done:
                 return [x[0] for x in words]
 
